@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from 'react'
+import './App.css'
+import Username from './components/Username'
+import { Routes, Route } from "react-router-dom";
+import Account from './components/Account'
 function App() {
+  const [user, setUser] = useState("")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route exact path='/' element={<Username setUser={setUser}/>}></Route>
+        <Route exact path='/account' element={<Account user={user}/>} ></Route>
+      </Routes>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
